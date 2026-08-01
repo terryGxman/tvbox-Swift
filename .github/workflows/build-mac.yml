@@ -1,0 +1,29 @@
+name: Build Intel macOS DMG
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-13
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Install xcodegen
+        run: brew install xcodegen
+
+      - name: Generate Xcode Project
+        run: xcodegen generate
+
+      - name: Run Package Script
+        run: |
+          chmod +x package_mac.sh
+          ./package_mac.sh
+
+      - name: Upload DMG
+        uses: actions/upload-artifact@v3
+        with:
+          name: TVBox-Intel-macOS-DMG
+          path: TVBox-macOS.dmg
