@@ -8,8 +8,8 @@ echo "清理构建目录..."
 rm -rf build
 rm -f TVBox-macOS.dmg
 
-echo "开始构建 macOS 版本..."
-xcodebuild -project tvbox.xcodeproj -scheme tvbox-macOS -configuration Release SYMROOT="$(pwd)/build" clean build
+echo "开始构建 Intel (x86_64) macOS 版本..."
+xcodebuild -project tvbox.xcodeproj -scheme tvbox-macOS -configuration Release -arch x86_64 ONLY_ACTIVE_ARCH=NO ARCHS="x86_64" SYMROOT="$(pwd)/build" clean build
 
 APP_PATH="build/Release/TVBox.app"
 
