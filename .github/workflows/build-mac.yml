@@ -9,7 +9,7 @@ jobs:
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Install xcodegen
         run: brew install xcodegen
@@ -23,7 +23,7 @@ jobs:
           ./package_mac.sh
 
       - name: Upload DMG
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: TVBox-Intel-macOS-DMG
           path: TVBox-macOS.dmg
